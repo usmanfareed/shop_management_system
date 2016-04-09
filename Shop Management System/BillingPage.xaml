@@ -1,0 +1,63 @@
+﻿<Page x:Class="Shop_Management_System.BillingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Shop_Management_System"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d"
+      Title="BillingPage" Height="798.98" Width="1342.454">
+
+    <Grid Background="White">
+        <StackPanel HorizontalAlignment="Left" Height="63" VerticalAlignment="Top" Width="1342" Background="Black">
+            <Label x:Name="label1" Foreground="White"  Content="  Billing Section" Height="62"   FontSize="26.667" Background="Black" Margin="403,0,420.6,0"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="247" Margin="1006,63,-294.448,0" VerticalAlignment="Top" Width="336">
+            <Label x:Name="label3" Foreground="Black" HorizontalContentAlignment="Center" Content="Total Price" Height="34" Margin="0,0,0.384,0" FontSize="14.667" Background="LawnGreen"/>
+            <Label x:Name="SubTotalLabel" Content="Sub Total :  0.00" FontStyle="Italic" HorizontalContentAlignment="Center" Foreground="Green"  Margin="0,0,0.384,0" Background="#FF070505" FontSize="34.667" Height="61"/>
+            <Label x:Name="label4_Copy1" Content="Tax :  0.00" FontStyle="Italic" HorizontalContentAlignment="Center" Foreground="Green"  Margin="0,0,0.384,0" Background="#FF070505" FontSize="34.667" Height="61"/>
+            <Label x:Name="TotalLabel" Content="Total : Rs 0.00" FontStyle="Italic" HorizontalContentAlignment="Center" Foreground="LimeGreen"  Margin="0,0,0.384,0" Background="#FF070505" FontSize="48" Height="95"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="489" Margin="1006,310,0,-0.28" VerticalAlignment="Top" Width="336" Background="#FF43B3C4">
+            <Label x:Name="label7" Content="
+Search Product" Margin="0,0,-0.384,0" Foreground="#DDFFFFFF" Background="#FF8D63C4" HorizontalContentAlignment="Center" Height="40" FontSize="18.667"/>
+            <TextBox x:Name="SearchBoxBil" materialDesign:TextFieldAssist.Hint="    Search" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Height="60" TextWrapping="Wrap" VerticalAlignment="Top"  Background="Cornsilk" FontSize="14.667" FontWeight="Bold" TextChanged="SearchBoxBil_TextChanged" Margin="0,0,-0.384,0"/>
+            <DataGrid x:Name="dataGridSelect" Height="386" Margin="0,0,-0.616,0" Background="#FF43B3C4" AutoGenerateColumns="False" CanUserAddRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserDeleteRows="False" MouseDoubleClick="DataGridSelect_OnMouseDoubleClick">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="100" Binding="{Binding Name}" IsReadOnly="True" Header="Product"/>
+                    <DataGridTextColumn Width="100" Binding="{Binding Price}" IsReadOnly="True" Header="Price"/>
+                    <DataGridTemplateColumn Header="Image" IsReadOnly="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding image}" Height="60" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+        </StackPanel>
+        <StackPanel Height="736" Margin="0,63,336.464,-0.28" VerticalAlignment="Top">
+            <Label x:Name="label6" Foreground="White" HorizontalContentAlignment="Center" Content="Total Items" FontSize="18.667" Background="#FF2196F3" Margin="0,0,-0.408,0"/>
+            <DockPanel Height="63" LastChildFill="False" Margin="0,0,0.08,0" Background="#FFADADAD">
+                <Button  x:Name="CheckOut" Height="Auto" FontWeight="Normal" Margin="250,8,250,3.976" Width="81" Background="#FF145426" Click="CheckOut_OnClick" >
+                    <materialDesign:PackIcon Kind="SquareIncCash" Height="41" Width="34" RenderTransformOrigin="0.556,0.247" />
+                </Button>
+                <Button  x:Name="reset" Height="Auto" FontWeight="Normal" Margin="35,8,35,3.976" Width="81" Background="Purple" Click="Reset_OnClick" >
+                    <materialDesign:PackIcon Kind="Autorenew" Height="41" Width="44" RenderTransformOrigin="0.556,0.247" />
+                </Button>
+            </DockPanel>
+            <DataGrid x:Name="dataGridItems"  Height="638" Margin="0,0,0.08,0" AutoGenerateColumns="False" CanUserAddRows="True" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False"  CurrentCellChanged="dataGridItems_CurrentCellChanged">
+                <DataGrid.Columns>
+                    <materialDesign:MaterialDataGridTextColumn Width="200" Binding="{Binding Name}" IsReadOnly="True" Header="Product"/>
+                    <materialDesign:MaterialDataGridTextColumn Width="200" Binding="{Binding Price}" IsReadOnly="True" Header="Price"/>
+                    <materialDesign:MaterialDataGridTextColumn Width="100" Binding="{Binding Quantity}" Header="Quantity" />
+                </DataGrid.Columns>
+
+            </DataGrid>
+        </StackPanel>
+
+    </Grid>
+</Page>

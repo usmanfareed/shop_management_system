@@ -1,0 +1,33 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Shop_Management_System"
+      xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit" x:Class="Shop_Management_System.report"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="report">
+
+    <Grid Margin="0,0,-1027.712,-441.712">
+        <chartingToolkit:Chart HorizontalAlignment="Left" Title="Monthly Sales Report" Foreground="White" VerticalAlignment="Top" Height="347" Width="1328" Margin="0,395,0,0">
+            <chartingToolkit:Chart.DataContext>
+                <PointCollection>1,10 2,20 3,30 4,40</PointCollection>
+            </chartingToolkit:Chart.DataContext>
+            <chartingToolkit:ColumnSeries x:Name="MonthlyReport" DependentValuePath="Value" IndependentValuePath="Key" Title="" Margin="0,0,-0.336,0.44" />
+        </chartingToolkit:Chart>
+        <chartingToolkit:Chart HorizontalAlignment="Left" Title="Weekly Sales Report" VerticalAlignment="Top" Height="332" Width="802" Margin="0,63,0,0" Foreground="White" >
+            <chartingToolkit:Chart.DataContext>
+                <PointCollection>1,10 2,20 3,30 4,40</PointCollection>
+            </chartingToolkit:Chart.DataContext>
+            <chartingToolkit:ColumnSeries x:Name="WeeklyReport" DependentValuePath="Value" IndependentValuePath="Key" ItemsSource="{Binding}" Title=""  Margin="0,0,-0.04,-0.072" />
+        </chartingToolkit:Chart>
+        <DatePicker x:Name="DatePicker" HorizontalAlignment="Left" Margin="1026,93,0,0" VerticalAlignment="Top" Width="213" Foreground="White" SelectedDateChanged="DatePicker_OnSelectedDateChanged"/>
+        <Label x:Name="label" Content="Choose Date" HorizontalAlignment="Left" Margin="846,93,0,0" VerticalAlignment="Top" Width="161" Height="33" FontSize="16"/>
+        <Label x:Name="SpecificReport" Content="     No data" BorderBrush="Black" BorderThickness="3"  HorizontalAlignment="Left" Margin="980,233,0,0" VerticalAlignment="Top" Height="43" Width="170" FontSize="24"/>
+        <Label x:Name="label2" Content="Items Sold" HorizontalAlignment="Left" Margin="1003,167,0,0" VerticalAlignment="Top" Height="35" Width="121" FontSize="18.667" RenderTransformOrigin="0.596,0.578"/>
+        <StackPanel HorizontalAlignment="Left" Height="63" VerticalAlignment="Top" Width="1328" Background="Black">
+            <Label x:Name="label1" Foreground="White"  Content="  Reports Section" Height="62"   FontSize="26.667" Background="Black" Margin="547,0,420.872,0"/>
+        </StackPanel>
+    </Grid>
+</Page>
