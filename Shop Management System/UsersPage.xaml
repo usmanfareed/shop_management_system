@@ -18,12 +18,20 @@
         <StackPanel HorizontalAlignment="Left" Height="63" VerticalAlignment="Top" Width="1333" Background="Black" Margin="0,0,-1,0">
             <Label x:Name="label1" Foreground="White"  Content="User Management" Height="62"   FontSize="26.667" Background="Black" Margin="554,0,420.248,0"/>
         </StackPanel>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="0,94,0,0" VerticalAlignment="Top" Height="284" Width="685"/>
+        <DataGrid x:Name="UserGrid" HorizontalAlignment="Left" Margin="0,94,0,0" VerticalAlignment="Top" Height="284" Width="685" ItemsSource="{Binding}" AutoGenerateColumns="False" MouseDoubleClick="UserGrid_MouseDoubleClick">
+            <DataGrid.Columns>
+                <materialDesign:MaterialDataGridTextColumn Binding="{Binding userID}" Visibility="Hidden" IsReadOnly="True" Header="GroupId"/>
+                <materialDesign:MaterialDataGridTextColumn Binding="{Binding groupID}" Visibility="Hidden" IsReadOnly="True" Header="GroupId"/>
+                <materialDesign:MaterialDataGridTextColumn Width="200" Binding="{Binding user_name}" IsReadOnly="True" Header="User Name"/>
+                <materialDesign:MaterialDataGridTextColumn  Binding="{Binding group_name}" IsReadOnly="True" Header="Group Name"/>
+            </DataGrid.Columns>
+        
+        </DataGrid>
         <Label x:Name="label2" Content="Name  :" HorizontalAlignment="Left" Margin="141,468,0,0" VerticalAlignment="Top" Width="78" FontSize="13.333" Height="30" Foreground="#DDFFFFFF"/>
         <TextBox x:Name="tb_Name" HorizontalAlignment="Left" Height="25" Margin="271,470,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" FontSize="13.333" Foreground="#FFFEFEFE"/>
         <Label x:Name="label2_Copy" Content="Password  :" HorizontalAlignment="Left" Margin="118,536,0,0" VerticalAlignment="Top" Width="89" FontSize="13.333" Height="30" Foreground="#DDFFFFFF"/>
-        <TextBox x:Name="tb_Password" HorizontalAlignment="Left" Height="25" Margin="267,529,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" FontSize="13.333" Foreground="#FFFEFEFE"/>
-        <ComboBox x:Name="GroupsDrop" DisplayMemberPath="GroupName" SelectedValuePath="GroupId" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="265,602,0,0" SelectedItem="YES" VerticalAlignment="Top" Width="113" Foreground="#FFF5F2F2" Background="{x:Null}">
+        <PasswordBox x:Name="tb_Password" HorizontalAlignment="Left" Height="25" Margin="267,529,0,0"  VerticalAlignment="Top" Width="234" FontSize="13.333" Foreground="#FFFEFEFE"/>
+        <ComboBox x:Name="GroupsDrop" DisplayMemberPath="GroupName" SelectedValuePath="GroupId" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="265,602,0,0" SelectedItem="YES" VerticalAlignment="Top" Width="113" Foreground="#FFEFF0F0" Background="#FF0A7985">
 
         </ComboBox>
         <Label x:Name="Groups" Content="Groups  :" HorizontalAlignment="Left" Margin="129,603,0,0" VerticalAlignment="Top" Width="90" FontSize="13.333" Height="30" Foreground="#FFFEFEFE"/>
@@ -55,7 +63,7 @@
         </DataGrid>
 
         <Button x:Name="CreateUser" Content="Create" HorizontalAlignment="Left" Margin="155,395,0,0" VerticalAlignment="Top" Width="100" Background="#FF5F238D" Click="CreateUser_Click"/>
-        <Button x:Name="button_Copy2" Content="Reset" HorizontalAlignment="Left" Margin="376,395,0,0" VerticalAlignment="Top" Width="100" Background="#FF9C1C6C"/>
+        <Button x:Name="ResetUser" Content="Reset" HorizontalAlignment="Left" Margin="376,395,0,0" VerticalAlignment="Top" Width="100" Background="#FF9C1C6C" Click="ResetUser_Click"/>
         <Label x:Name="label" Content="                                                                   Users" HorizontalAlignment="Left" Margin="0,63,0,0" VerticalAlignment="Top" Width="680" Background="#FF0D3D84" FontSize="16"/>
         <Label x:Name="label_Copy" Content="                                                     Groups and Permissions" HorizontalAlignment="Left" Margin="685,63,0,0" VerticalAlignment="Top" Width="647" Background="#FF0D3D84" FontSize="16"/>
 

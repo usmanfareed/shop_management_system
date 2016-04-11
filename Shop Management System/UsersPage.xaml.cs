@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,19 +24,19 @@ namespace Shop_Management_System
     public partial class UsersPage : Page
     {
         public static int Id;
+        public static int UserId;
+
 
         public UsersPage()
         {
             InitializeComponent();
             DropDownLoad();
             LoadGroupsGrid();
+            LoadUsers();
         }
 
         private void CreateGroup_Click(object sender, RoutedEventArgs e)
         {
-
-
-
             List<int> list = new List<int>();
             string Name = groupName.Text;
 
@@ -47,7 +48,7 @@ namespace Shop_Management_System
 
             string message = GroupAndPermissionModel.InsertProduct(Id, Name, list);
             Reset();
-          
+
             MessageBox.Show(message);
             LoadGroupsGrid();
         }
@@ -57,6 +58,8 @@ namespace Shop_Management_System
             var data = GroupAndPermissionModel.GetGroups();
             GroupsDrop.ItemsSource = data;
             GroupsDrop.SelectedValue = data.Select(x => x.GroupId).First();
+            GroupsDrop.SelectedValue = null;
+
         }
 
         private void LoadGroupsGrid()
@@ -74,7 +77,7 @@ namespace Shop_Management_System
 
                     GroupName = group.GroupName;
                     int GroupId = group.GroupId;
-                    
+
 
                     string Permissions = string.Join("  ,  ", groups.Where(x => x.GroupName.Equals(GroupName))
                         .Select(x => x.PermissionName).ToList());
@@ -98,47 +101,42 @@ namespace Shop_Management_System
 
             groupName.Text = group.GroupName;
 
-             string[] permissions = group.PermissionName.Split(',');
+            string[] permissions = group.PermissionName.Split(',');
 
             foreach (var permission in permissions)
             {
                 switch (permission.Trim())
                 {
-                    case "BillingSection" :
+                    case "BillingSection":
                     {
                         Billing.IsChecked = true;
                     }
                         break;
-                        
-                    case "InventorySection" :
+
+                    case "InventorySection":
                     {
                         Inventory.IsChecked = true;
                     }
                         break;
-                        
+
                     case "ReportsSection":
                     {
                         Reports.IsChecked = true;
                     }
                         break;
-                        
-                    case "Users" :
+
+                    case "Users":
                     {
                         Users.IsChecked = true;
                     }
                         break;
-                        
                 }
             }
-            
-
         }
 
         private void resetGroupGrid_Click(object sender, RoutedEventArgs e)
         {
-           Reset();
-        
-
+            Reset();
         }
 
         private void Reset()
@@ -150,11 +148,59 @@ namespace Shop_Management_System
             Reports.IsChecked = false;
             Users.IsChecked = false;
             CreateGroup.Content = "Create";
-
         }
 
         private void CreateUser_Click(object sender, RoutedEventArgs e)
         {
+
+            User user = new User();
+            user.UserId = UserId;
+            user.UserName = tb_Name.Text;
+            user.UserPassword = tb_Password.Password;
+            user.GroupId = Convert.ToInt32(GroupsDrop.SelectedValue);
+
+            bool check = UserModel.CreateUser(user);
+
+            MessageBox.Show(check ? "Success" : "Failed");
+            LoadUsers();
+            UserSectionReset();
+
+        }
+
+
+        private void LoadUsers()
+        {
+            DataTable table = UserModel.GetUsers();
+
+            UserGrid.DataContext = table.DefaultView;
+        }
+
+        private void UserGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            DataRowView data = (DataRowView)UserGrid.CurrentItem;
+            var row = data.Row;
+            UserId = Convert.ToInt32(row.ItemArray[0]);
+            tb_Name.Text = row.ItemArray[1].ToString();
+            GroupsDrop.SelectedValue = Convert.ToInt32(row.ItemArray[2]);
+
+            CreateUser.Content = "Update";
+        }
+
+        private void UserSectionReset()
+        {
+            UserId = 0;
+            tb_Name.Text = null;
+            tb_Password.Password = null;
+            GroupsDrop.SelectedValue = null;
+            CreateUser.Content = "Create";
+
+
+        }
+
+        private void ResetUser_Click(object sender, RoutedEventArgs e)
+        {
+            LoadUsers();
+            UserSectionReset();
 
         }
     }

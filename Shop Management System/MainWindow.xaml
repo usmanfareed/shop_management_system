@@ -24,22 +24,22 @@
 
         <StackPanel HorizontalAlignment="Left" Height="744" VerticalAlignment="Top" Width="125" Background="Black">
             <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Width="125" Background="Black" Margin="0,110">
-                <Button  x:Name="button" Height="87" VerticalAlignment="Stretch" FontWeight="Normal" Margin="0,0,0.184,0" Click="button_Click" Background="#FF2196F3">
+                <Button  x:Name="btn_Billing"  Visibility="Hidden"  Height="87" VerticalAlignment="Stretch" FontWeight="Normal" Margin="0,0,0.184,0" Click="button_Click" Background="#FF2196F3">
                     <materialDesign:PackIcon Kind="CashMultiple" Height="47" Width="62" RenderTransformOrigin="0.556,0.247" />
                 </Button>
-                <Label x:Name="label" Content="BILLING" Foreground="DodgerBlue" VerticalAlignment="Stretch" HorizontalAlignment="Center" Margin="0,0,0.184,0"/>
-                <Button  x:Name="button_Copy" Height="87" VerticalAlignment="Stretch" FontWeight="Normal" Margin="0,0,0.184,0" Background="#FF63C49F" Click="button_Copy_Click">
+                <Label x:Name="lbl_Billing" Visibility="Hidden"  Content="BILLING" Foreground="DodgerBlue" VerticalAlignment="Stretch" HorizontalAlignment="Center" Margin="0,0,0.184,0"/>
+                <Button  x:Name="btn_Inventory" Visibility="Hidden"  Height="87" VerticalAlignment="Stretch" FontWeight="Normal" Margin="0,0,0.184,0" Background="#FF63C49F" Click="button_Copy_Click">
                     <materialDesign:PackIcon Kind="FormatListBulleted" Height="47" Width="62" RenderTransformOrigin="0.556,0.247" />
                 </Button>
-                <Label x:Name="label_Copy" Content="INVENTORY" Foreground="ForestGreen" VerticalAlignment="Stretch" HorizontalAlignment="Center" Margin="24,0,27.184,0" Width="74"/>
-                <Button  x:Name="button_Copy1" Height="87" VerticalAlignment="Stretch" FontWeight="Normal" Margin="0,0,0.184,0" Background="#FF8D63C4" Click="Button_Copy1_OnClick">
+                <Label x:Name="lbl_Inventory"  Visibility="Hidden" Content="INVENTORY" Foreground="ForestGreen" VerticalAlignment="Stretch" HorizontalAlignment="Center" Margin="24,0,27.184,0" Width="74"/>
+                <Button  x:Name="btn_Reports" Visibility="Hidden"  Height="87" VerticalAlignment="Stretch" FontWeight="Normal" Margin="0,0,0.184,0" Background="#FF8D63C4" Click="Button_Copy1_OnClick">
                     <materialDesign:PackIcon Kind="ChartAreaspline" Height="47" Width="62" RenderTransformOrigin="0.556,0.247" />
                 </Button>
-                <Label x:Name="label_Copy1" Content=" REPORTS" VerticalAlignment="Stretch" Foreground="MediumPurple" HorizontalAlignment="Center" Margin="24,0,37.184,0" Width="64"/>
-                <Button  x:Name="button_Copy2" Height="87" VerticalAlignment="Stretch" FontWeight="Normal" Margin="0,0,0.184,0" Background="#FFBC5B73" Click="button_Copy2_Click">
+                <Label x:Name="lbl_Reports" Visibility="Hidden" Content=" REPORTS" VerticalAlignment="Stretch" Foreground="MediumPurple" HorizontalAlignment="Center" Margin="24,0,37.184,0" Width="64"/>
+                <Button  x:Name="btn_Users" Visibility="Hidden" Height="87" VerticalAlignment="Stretch" FontWeight="Normal" Margin="0,0,0.184,0" Background="#FFBC5B73" Click="button_Copy2_Click">
                     <materialDesign:PackIcon Kind="Account" Height="47" Width="62" RenderTransformOrigin="0.556,0.247" />
                 </Button>
-                <Label x:Name="label_Copy2" Content="   Users" Foreground="Red" VerticalAlignment="Stretch" HorizontalAlignment="Center" Margin="24,0,27.184,0" Width="74"/>
+                <Label x:Name="lbl_Users" Content="   Users"  Visibility="Hidden"  Foreground="Red" VerticalAlignment="Stretch" HorizontalAlignment="Center" Margin="24,0,27.184,0" Width="74"/>
                 <Button  x:Name="button_Copy3" Height="87" VerticalAlignment="Stretch"  FontWeight="Normal" Margin="0,0,0.184,0" Background="#FFD4BB12">
                     <materialDesign:PackIcon Kind="InformationOutline" Height="47" Width="62" RenderTransformOrigin="0.556,0.247" />
                 </Button>

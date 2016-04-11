@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DLL;
 using MahApps.Metro.Controls;
 
 namespace Shop_Management_System
@@ -21,6 +22,10 @@ namespace Shop_Management_System
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        
+
+
+
         dynamic billingPage = new BillingPage();
         dynamic inventoryPage = new InventoryPage();
         dynamic ReportPage = new report();
@@ -32,6 +37,44 @@ namespace Shop_Management_System
             InitializeComponent();
             
             frame.NavigationService.Navigate(billingPage);
+
+
+            foreach (var permission in BaseClass.Permissions)
+            {
+
+                switch (permission)
+                {
+                    case "BillingSection":
+                    {
+                        btn_Billing.Visibility = Visibility.Visible;
+                        lbl_Billing.Visibility = Visibility.Visible;
+                    }
+                        break;
+
+                    case "InventorySection":
+                    {
+                            btn_Inventory.Visibility = Visibility.Visible;
+                            lbl_Inventory.Visibility = Visibility.Visible;
+                        }
+                        break;
+
+                    case "ReportSection":
+                    {
+                            btn_Reports.Visibility = Visibility.Visible;
+                            lbl_Reports.Visibility = Visibility.Visible;
+                        }
+                        break;
+
+                    case "UserSection":
+                    {
+                            btn_Users.Visibility = Visibility.Visible;
+                            lbl_Users.Visibility = Visibility.Visible;
+                        }
+                        break;
+                }
+
+            }
+
         }
 
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)

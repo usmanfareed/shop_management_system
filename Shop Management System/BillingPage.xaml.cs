@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DLL;
 using DLL.DataModel;
 using DLL.DAL;
 
@@ -109,6 +110,12 @@ namespace Shop_Management_System
         private void CheckOut_OnClick(object sender, RoutedEventArgs e)
         {
            SalesModel.SaveSalesReport(TotalQuantity);
+
+            BaseClass.TotalPrice = TotalPrice;
+            BaseClass.products = list;
+
+            BaseClass baseClass = new BaseClass();
+            baseClass.PrintReceipt();
         }
 
 

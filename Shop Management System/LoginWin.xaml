@@ -29,7 +29,7 @@
         <materialDesign:PackIcon Kind="KeyVariant" Margin="20,140,0,0" RenderTransformOrigin="-0.546,0.614" />
         <Label  x:Name="label_Copy" Content="  Password : " HorizontalAlignment="Right" Margin="0,133,167.232,0" VerticalAlignment="Top" Height="32" Width="80" RenderTransformOrigin="1.366,1.066"/>
         <TextBox x:Name="username" HorizontalAlignment="Left" Height="23" Margin="128,73,0,0" TextWrapping="Wrap" Foreground="White" VerticalAlignment="Top" Width="120" />
-        <TextBox x:Name="password" HorizontalAlignment="Left" Height="23" Margin="128,133,0,0" TextWrapping="Wrap" Foreground="White" VerticalAlignment="Top" Width="120"/>
+        <PasswordBox x:Name="password" HorizontalAlignment="Left" Height="23" Margin="128,133,0,0"  Foreground="White" VerticalAlignment="Top" Width="120"/>
 
         <Button x:Name="Login" Content="Login" HorizontalAlignment="Left" Margin="47,260,0,0" VerticalAlignment="Top" Width="69" Click="Login_btn"/>
         <Button x:Name="reset" Content="Reset" HorizontalAlignment="Left" Margin="147,260,0,0" VerticalAlignment="Top" Width="69" Background="#FFB73A5D" BorderBrush="#FFB73A88"/>

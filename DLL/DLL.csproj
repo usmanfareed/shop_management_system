@@ -50,8 +50,10 @@
     <Compile Include="DAL\GroupAndPermissionModel.cs" />
     <Compile Include="DAL\ProductModel.cs" />
     <Compile Include="DAL\SalesModel.cs" />
+    <Compile Include="DAL\UserModel.cs" />
     <Compile Include="DataModel\Group.cs" />
     <Compile Include="DataModel\Product.cs" />
+    <Compile Include="DataModel\User.cs" />
     <Compile Include="Encyption.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

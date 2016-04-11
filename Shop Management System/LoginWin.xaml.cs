@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DLL.DataModel;
 using DLL;
+using DLL.DAL;
 using MahApps.Metro.Controls;
 
 namespace Shop_Management_System
@@ -34,34 +35,28 @@ namespace Shop_Management_System
         private void Login_btn(object sender, RoutedEventArgs e)
         {
 
-            SqlConnection con = new SqlConnection(BaseClass.Connection);
-            
-            string query = "SELECT * FROM um_users WHERE user_name='" + username.Text.Trim() + "' AND password='" + password.Text.Trim() +
-                           "' ";
 
-            con.Open();
-
-            SqlCommand selectCommand = new SqlCommand(query, con);
-
-            SqlDataReader reader = selectCommand.ExecuteReader();
+           bool check = UserModel.LoginUser(username.Text.Trim(), password.Password.Trim());
 
 
-            reader.Read();
+           
 
-            if (!String.IsNullOrWhiteSpace(reader["user_name"].ToString()) && !String.IsNullOrWhiteSpace(reader["password"].ToString()))
+            if (check)
             {
 
 
-                BaseClass.UserId = Convert.ToInt32(reader["userID"]);
                 MainWindow window = new MainWindow();
                 window.Show();
                 this.Close();
-                con.Close();
-                con.Dispose();
+
+            }
+            else
+            {
+                MessageBox.Show("Wrong User Name or Password");
             }
 
 
-
+            
 
         }
 
